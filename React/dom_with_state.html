@@ -60,7 +60,12 @@
             description: 'todo1',
             id: "1"
         }])
-
+ // FOR live server
+ /*window.setInterval(async function(){
+    const res = await fetch("Server_URL");
+    const json = await res.json();
+    updateTodoAccToState(json);
+ }) */
     </script>
 </body>
 
