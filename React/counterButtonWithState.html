@@ -3,6 +3,8 @@
     <body>
         <div id="buttonParent"></div>
         <script>
+
+            //global state
             let state = {
                 count: 0
             }
@@ -12,12 +14,14 @@
                 butttonComponentReRender();
             }
 
+            //when we have react we don't have to write this re-rendering logic and this function call
             function butttonComponentReRender() {
                 document.getElementById("buttonParent").innerHTML = "";
                 const component = buttonComponent(state.count);
                 document.getElementById("buttonParent").appendChild(component);
             }
 
+            //button component
             function buttonComponent(count) {
                 const button = document.createElement("button");
                 button.innerHTML = `Counter ${count}`
@@ -25,6 +29,7 @@
                 return button;
             }
 
+            //this also
             butttonComponentReRender();
         </script>
     </body>
