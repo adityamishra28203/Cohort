@@ -34,10 +34,10 @@ export function CreateTodo() {
                 "Content-type": "application/json"
             }
         })
-            .then(async function (res) {
-                const todo = await res.json();
-                alert("Todo Added");
-            })
+            //.then(async function (res) {
+              //  const todo = await res.json();
+                //alert("Todo Added");
+            //})
         }}>Add a todo</button>
     </div>
 }

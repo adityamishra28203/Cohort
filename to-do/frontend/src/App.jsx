@@ -5,10 +5,10 @@ import './App.css'
 
 function App() {
   const [todos, setTodos] = useState([])
-
+//not the right way as it will keep hitting the API everytime the app re-renders, to avoid use useEffect hook
   fetch("http://localhost:3000/todos")
     .then(async function(res) {
-      const json = await res.json();          //not the right way as it will keep hitting the API everytime the app re-renders, to avoid use useEffect hook
+      const json = await res.json();          
       setTodos(json.todos)
     })
 
