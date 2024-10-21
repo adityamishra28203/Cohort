@@ -8,7 +8,7 @@ function App() {
 //not the right way as it will keep hitting the API everytime the app re-renders, to avoid use useEffect hook
   fetch("http://localhost:3000/todos")
     .then(async function(res) {
-      const json = await res.json();          
+      const json = await res.json();         
       setTodos(json.todos)
     })
 
