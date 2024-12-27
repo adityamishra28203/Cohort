@@ -6,14 +6,17 @@ const [count, setCount] = useState(0);
 return (
   <div>
     <Count count={count}/>
-    <Buttons count={count} setCount={setCount}/>
+    
   </div>
 )
 }
 
-function Count ({count}) {
+//e.g. Count component donot using setCount state variable still we need to pass it Count comp. because Button comp. using it.
+
+function Count ({count, setCount}) {
   return <div>
     {count}
+    <Buttons count={count} setCount={setCount}/>
   </div>
 }
 
