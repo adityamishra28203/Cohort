@@ -11,7 +11,7 @@ const [count, setCount] = useState(0);
 return (
   <div>
     <CounterContext.Provider value={{count, setCount}}>
-      <Count count={count} setCount={setCount}/>
+      <Count />
     </CounterContext.Provider>
   </div>
 )
