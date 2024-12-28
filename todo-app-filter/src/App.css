@@ -1,0 +1,126 @@
+import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { Todo, OriginalTodos, FilterWord, FilterdTodos} from './state/atom/todos';
+
+let id_to = 0;
+function Inputs(){
+
+// try {
+let timeout1, timeout2;
+const [todo, setTodo] = useRecoilState(Todo);
+
+return <>
+<input type='text' placeholder={"title"} onChange={(event)=>{
+clearTimeout(timeout1);
+
+timeout1 = setTimeout(()=>{
+//starts new timer
+setTodo({...todo,
+title: event.target.value,
+id_todo: id_to})
+}, 1000)} }/>
+
+<br/>
+
+<input type='text'placeholder={"description"} onChange={(event)=>{
+clearTimeout(timeout2);
+
+timeout2 = setTimeout(()=>{
+
+//starts new timer
+setTodo({ ...todo,
+description: event.target.value,
+id_todo: id_to})
+}, 1000)} }/>
+</>
+// } catch (error) {
+// const promise = Promise.resolve(error);
+// promise.then((result)=>{console.log(result);});
+
+// return <>
+// error
+// </>
+// }
+
+}
+
+function AddTodos(){
+// try {
+// const todo = useRecoilValue(Todo);
+
+const todo = useRecoilValue(Todo);
+const [originalTodos, setOriginalTodos] = useRecoilState(OriginalTodos);
+
+// console.log(prom);
+// const prom2 = Promise.resolve(prom);
+// console.log(prom2);
+// let todo;
+// prom2.then((response)=>{console.log(response);})
+
+const AddTodoToOriginal = () => {
+if(originalTodos.includes(todo)){alert("todo already exists")}
+else{
+setOriginalTodos([...originalTodos, todo]);
+id_to++;
+}
+};
+
+return <>
+<h3>todo id:- {id_to}</h3>
+<h3>title:- {todo.title} </h3>
+<h4>desciption:- {todo.description}</h4>
+<button onClick={AddTodoToOriginal}>Add to Original Todos</button>
+<br/><br/>
+</>
+
+// } catch (error) {
+// const promise = Promise.resolve(error);
+// promise.then((result)=>console.log(result));
+// }
+}
+
+function Display_all_todos(){
+
+// const originalTodos = useRecoilValue(OriginalTodos);
+
+const setFilterWord = useSetRecoilState(FilterWord);
+const filteredTodos = useRecoilValue(FilterdTodos);
+
+let id = 0;
+return<>
+<input type='text' placeholder='type to filter todos' onChange={(event)=>{setFilterWord(event.target.value)}}></input>
+
+{/* {originalTodos.map((todo)=>{
+return <div key={id++}>
+<h2>todo:- {id}</h2>
+<h3>title:- {todo.title} </h3>
+<p>desciption:- {todo.description}</p>
+</div>
+})} */}
+
+
+{filteredTodos.map((todo)=>{
+
+return <div key={id++}>
+<h2>todo:- {todo.id_todo}</h2>
+<h3> title:- {todo.title} </h3>
+<p> desciption:- {todo.description}</p>
+</div>
+})}
+
+</>
+}
+
+function App() {
+
+return (
+<>
+<RecoilRoot>
+<Inputs/>
+<AddTodos/>
+<Display_all_todos/>
+</RecoilRoot>
+</>
+)
+}
+
+export default App
