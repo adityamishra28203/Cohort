@@ -13,17 +13,6 @@ function App () {
 function DisplayNotifications() {
     const [notif, setNotif] = useRecoilState(notificationAtom)
     const totalNotifications = useRecoilValue(allNotifications)
-
-    useEffect( () => {
-        axios.get("http://localhost:3000/notifications")
-            .then(res => {
-                setNotif(res.data)
-            })
-            .catch((error) => {
-                console.error('Error fetching notifications:', error);
-            });
-    }, [])
-
     return (
         <>
             <button>Home</button>
