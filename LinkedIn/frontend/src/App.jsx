@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { allNotifications, notificationAtom } from "./notification";
+import { allNotifications, notificationAtom } from "./atom";
 import { RecoilRoot, useRecoilValue, useRecoilState } from "recoil";
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ function DisplayNotifications() {
     const totalNotifications = useRecoilValue(allNotifications)
 
     useEffect( () => {
-        axios.get("http://localhost:4000/notifications")
+        axios.get("http://localhost:3000/notifications")
             .then(res => {
                 setNotif(res.data)
             })

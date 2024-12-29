@@ -1,5 +1,5 @@
 {
-  "name": "linkedinnotifications-async-data-queries",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
-    "express": "^4.21.2",
-    "node": "^23.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recoil": "^0.7.7"
