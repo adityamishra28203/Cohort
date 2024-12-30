@@ -2,13 +2,12 @@ import { useRecoilValueLoadable, RecoilRoot } from 'recoil'
 import { todoAtomFamily } from './atom';
 
 function Todo ({id}) {
-
-  const todo = useRecoilValueLoadable(todoAtomFamily(id))
+  const todo = useRecoilValueLoadable(todoAtomFamily(id))   //todo here is now  a object containing state, contents.
 
   if(todo.state === "loading") {
     return <div>
       Loading...
-    </div>
+    </div>                      
   } else if(todo.state === "hasValue") {
     return (
       <>
