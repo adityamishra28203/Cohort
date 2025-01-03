@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 
-mongoose.connect("mongodb://localhost:27017/paytm")
+mongoose.connect("mongodb+srv://adityamishraubi:9460%40Db@cluster0.2rqwy.mongodb.net/paytm")
 
 // Create a Schema for Users
 const userSchema = new mongoose.Schema({
