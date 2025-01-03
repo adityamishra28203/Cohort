@@ -1,8 +1,9 @@
 // backend/db.js
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
-
-mongoose.connect("mongodb+srv://adityamishraubi:9460%40Db@cluster0.2rqwy.mongodb.net/paytm")
+require("dotenv").config();
+const dbUrl = process.env.DATABASE_URL;
+mongoose.connect(dbUrl)
 
 // Create a Schema for Users
 const userSchema = new mongoose.Schema({
