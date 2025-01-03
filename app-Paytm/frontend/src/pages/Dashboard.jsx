@@ -3,21 +3,24 @@ import { Appbar } from "../components/Appbar"
 import { Balance } from "../components/Balance"
 import { Users } from "../components/Users"
 import axios from "axios";
-import cors from 'cors'
-cors();
 export const Dashboard = () => {
 
     const [balance, setBalance] = useState("");  
     
-    useEffect(async () => {
-        await axios
-            .get("http://localhost:27017/api/v1/account/balance")  
-            .then((response) => {
+    useEffect( () => {
+        const fetchBalance = async () => {
+        try{
+                const response =await axios.get("http://localhost:3000/api/v1/account/balance", {
+                    headers: {
+                            Authorization: "Bearer " + localStorage.getItem("token")
+                    }
+                });
                 setBalance(response.data.balance);
-            })
-            .catch((error) => {
+            } catch(error){
                 console.error("Error fetching balance:", error);
-            });
+            }
+        };
+        fetchBalance();
     }, [balance]); 
 
     return <div>

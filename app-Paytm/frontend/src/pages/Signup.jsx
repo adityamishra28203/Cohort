@@ -18,7 +18,7 @@ export const Signup = () => {
     <div className="flex flex-col justify-center">
       <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
         <Heading label={"Sign up"} />
-        <SubHeading label={"Enter your infromation to create an account"} />
+        <SubHeading label={"Enter your information to create an account"} />
         <InputBox onChange={e => {
           setFirstName(e.target.value);
         }} placeholder="John" label={"First Name"} />
@@ -27,7 +27,7 @@ export const Signup = () => {
         }} placeholder="Doe" label={"Last Name"} />
         <InputBox onChange={e => {
           setUsername(e.target.value);
-        }} placeholder="harkirat@gmail.com" label={"Email"} />
+        }} placeholder="aditya@gmail.com" label={"Email"} />
         <InputBox onChange={(e) => {
           setPassword(e.target.value)
         }} placeholder="123456" label={"Password"} />
@@ -40,7 +40,7 @@ export const Signup = () => {
               password
             });
             localStorage.setItem("token", response.data.token)
-            navigate("/dashboard")
+            navigate("/signin")
           }} label={"Sign up"} />
         </div>
         <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
